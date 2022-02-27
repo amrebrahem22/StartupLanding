@@ -39,16 +39,31 @@ export default function MobileDrawer() {
             width="320px"
             drawerHandler={
                 <Box sx={styles.handler}>
-                    <IoMdMenu size="26px" />
+                    <IoMdMenu
+                        size="26px"
+                        style={{
+                            cursor: "pointer",
+                        }}
+                    />
                 </Box>
             }
             open={isDrawerOpen}
             toggleHandler={() => setIsDrawerOpen((prevState) => !prevState)}
-            closeButton={<IoMdClose size="24px" color="#000000" />}
+            closeButton={
+                <IoMdClose
+                    style={{
+                        display: "block",
+                        cursor: "pointer",
+                        margin: "0.5rem 1rem 0 auto",
+                    }}
+                    size="24px"
+                    color="#000000"
+                />
+            }
             drawerStyle={styles.drawer}
             closeBtnStyle={styles.close}
         >
-            <Scrollbars autoHide>
+            <Scrollbars>
                 <Box sx={styles.content}>
                     <Box sx={styles.menu}>
                         {menuItems.map((menuItem, i) => (
@@ -66,13 +81,15 @@ export default function MobileDrawer() {
                         ))}
                     </Box>
                     <Box sx={styles.menuFooter}>
-                      <Box sx={styles.social}>
-                        {social.map((socialItem, i) => (
-                          <Box as="span" key={i} sx={styles.social.icon}>
-                            <Link to={socialItem.path}>{socialItem.icon}</Link>
-                          </Box>
-                        ))}
-                      </Box>
+                        <Box sx={styles.social}>
+                            {social.map((socialItem, i) => (
+                                <Box as="span" key={i} sx={styles.social.icon}>
+                                    <Link to={socialItem.path}>
+                                        {socialItem.icon}
+                                    </Link>
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
                 </Box>
             </Scrollbars>
@@ -115,8 +132,8 @@ const styles = {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        pt: "100px",
-        pb: "40px",
+        pt: "90px",
+        pb: "60px",
         px: "30px",
     },
 

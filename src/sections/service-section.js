@@ -20,6 +20,7 @@ import shapePattern from "assets/shape-pattern1.png";
 
 import Smart from "assets/services/smart.svg";
 import Secure from "assets/services/secure.svg";
+import FadeInWhenVisible from "../components/motion/FadeInWhenVisible";
 
 const data = {
     subTitle: "our services",
@@ -55,45 +56,52 @@ export default function ServiceSection() {
     return (
         <section sx={{ variant: "section.services" }}>
             <Container sx={styles.containerBox}>
-                <Box sx={styles.thumbnail}>
-                    <Image src={ServiceThumb} alt="thumbnail" />
-                    <Button
-                        sx={styles.videoBtn}
-                        onClick={handleClick}
-                        aria-label="Play Button"
-                    >
-                        <span>
-                            <IoIosPlay />
-                        </span>
-                    </Button>
-                    <Box sx={styles.shapeBox}>
-                        <Image src={shapePattern} alt="shape" />
+                <FadeInWhenVisible>
+                    <Box sx={styles.thumbnail}>
+                        <Image src={ServiceThumb} alt="thumbnail" />
+                        <Button
+                            sx={styles.videoBtn}
+                            onClick={handleClick}
+                            aria-label="Play Button"
+                        >
+                            <span>
+                                <IoIosPlay />
+                            </span>
+                        </Button>
+                        <Box sx={styles.shapeBox}>
+                            <Image src={shapePattern} alt="shape" />
+                        </Box>
                     </Box>
-                </Box>
-                <Box sx={styles.contentBox}>
-                    <TextFeature subTitle={data.subTitle} title={data.title} />
+                </FadeInWhenVisible>
+                <FadeInWhenVisible>
+                    <Box sx={styles.contentBox}>
+                        <TextFeature
+                            subTitle={data.subTitle}
+                            title={data.title}
+                        />
 
-                    <Grid sx={styles.grid}>
-                        {data.features.map((feature) => (
-                            <Box sx={styles.card} key={feature.id}>
-                                <Image
-                                    src={feature.imgSrc}
-                                    alt={feature.altText}
-                                    sx={styles.icon}
-                                />
+                        <Grid sx={styles.grid}>
+                            {data.features.map((feature) => (
+                                <Box sx={styles.card} key={feature.id}>
+                                    <Image
+                                        src={feature.imgSrc}
+                                        alt={feature.altText}
+                                        sx={styles.icon}
+                                    />
 
-                                <Box sx={styles.wrapper}>
-                                    <Heading sx={styles.wrapper.title}>
-                                        {feature.title}
-                                    </Heading>
-                                    <Text sx={styles.wrapper.subTitle}>
-                                        {feature.text}
-                                    </Text>
+                                    <Box sx={styles.wrapper}>
+                                        <Heading sx={styles.wrapper.title}>
+                                            {feature.title}
+                                        </Heading>
+                                        <Text sx={styles.wrapper.subTitle}>
+                                            {feature.text}
+                                        </Text>
+                                    </Box>
                                 </Box>
-                            </Box>
-                        ))}
-                    </Grid>
-                </Box>
+                            ))}
+                        </Grid>
+                    </Box>
+                </FadeInWhenVisible>
             </Container>
             <ModalVideo
                 channel="youtube"

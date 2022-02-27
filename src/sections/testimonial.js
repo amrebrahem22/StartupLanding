@@ -4,6 +4,7 @@ import SectionHeader from "components/section-header";
 import Rating from "components/rating";
 import ButtonGroup from "components/button-group";
 import Carousel from "react-multi-carousel";
+import FadeInWhenVisible from "components/motion/FadeInWhenVisible";
 
 import Avatar1 from "assets/testimonial/avatar1.png";
 import Avatar2 from "assets/testimonial/avatar2.png";
@@ -103,39 +104,43 @@ export default function TestimonialCard() {
     return (
         <section id="testimonial" sx={{ variant: "section.testimonial" }}>
             <Container css={{ textAlign: "center" }}>
-                <SectionHeader
-                    slogan="Testimonial"
-                    title="Meet Client Satisfaction"
-                />
+                <FadeInWhenVisible>
+                    <SectionHeader
+                        slogan="Testimonial"
+                        title="Meet Client Satisfaction"
+                    />
+                </FadeInWhenVisible>
             </Container>
             <Box sx={styles.carouselWrapper}>
                 <Carousel {...carouselParams}>
                     {data.map((item) => (
-                        <Box sx={styles.reviewCard} key={item.sliderClass}>
-                            <Rating rating={item.review} />
-                            <Heading as="h3" sx={styles.title}>
-                                {item.title}
-                            </Heading>
-                            <Text sx={styles.description}>
-                                {item.description}
-                            </Text>
-                            <div className="card-footer">
-                                <div className="image">
-                                    <Image
-                                        src={item.avatar}
-                                        alt="Client Image"
-                                    />
+                        <FadeInWhenVisible>
+                            <Box sx={styles.reviewCard} key={item.sliderClass}>
+                                <Rating rating={item.review} />
+                                <Heading as="h3" sx={styles.title}>
+                                    {item.title}
+                                </Heading>
+                                <Text sx={styles.description}>
+                                    {item.description}
+                                </Text>
+                                <div className="card-footer">
+                                    <div className="image">
+                                        <Image
+                                            src={item.avatar}
+                                            alt="Client Image"
+                                        />
+                                    </div>
+                                    <div className="reviewer-info">
+                                        <Heading as="h4" sx={styles.heading}>
+                                            {item.name}
+                                        </Heading>
+                                        <Text sx={styles.designation}>
+                                            {item.designation}
+                                        </Text>
+                                    </div>
                                 </div>
-                                <div className="reviewer-info">
-                                    <Heading as="h4" sx={styles.heading}>
-                                        {item.name}
-                                    </Heading>
-                                    <Text sx={styles.designation}>
-                                        {item.designation}
-                                    </Text>
-                                </div>
-                            </div>
-                        </Box>
+                            </Box>
+                        </FadeInWhenVisible>
                     ))}
                 </Carousel>
             </Box>

@@ -2,6 +2,7 @@
 import { jsx } from "theme-ui";
 import { Container, Grid, Box, Heading, Text } from "theme-ui";
 import SectionHeader from "components/section-header";
+import FadeInWhenVisible from "components/motion/FadeInWhenVisible";
 
 import PatternBG from "assets/patternBG.png";
 import ArrowOdd from "assets/arrowOdd.svg";
@@ -38,24 +39,30 @@ export default function WorkFlow() {
     return (
         <section sx={styles.workflow}>
             <Container>
-                <SectionHeader
-                    slogan="WHATS THE FUNCTION"
-                    title="Meet the Feature of our Product"
-                    isWhite={true}
-                />
+                <FadeInWhenVisible>
+                    <SectionHeader
+                        slogan="WHATS THE FUNCTION"
+                        title="Meet the Feature of our Product"
+                        isWhite={true}
+                    />
+                </FadeInWhenVisible>
 
                 <Grid sx={styles.grid}>
                     {data.map((item) => (
                         <Box sx={styles.card} key={item.id}>
-                            <Box sx={styles.iconBox}>{`0${item.id}`}</Box>
-                            <Box sx={styles.wrapper}>
-                                <Heading sx={styles.wrapper.title}>
-                                    {item.title}
-                                </Heading>
-                                <Text sx={styles.wrapper.subTitle}>
-                                    {item.text}
-                                </Text>
-                            </Box>
+                            <FadeInWhenVisible>
+                                <Box sx={styles.iconBox}>{`0${item.id}`}</Box>
+                            </FadeInWhenVisible>
+                            <FadeInWhenVisible>
+                                <Box sx={styles.wrapper}>
+                                    <Heading sx={styles.wrapper.title}>
+                                        {item.title}
+                                    </Heading>
+                                    <Text sx={styles.wrapper.subTitle}>
+                                        {item.text}
+                                    </Text>
+                                </Box>
+                            </FadeInWhenVisible>
                         </Box>
                     ))}
                 </Grid>

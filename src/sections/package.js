@@ -7,6 +7,7 @@ import PriceCard from "components/price-card";
 import ButtonGroup from "components/button-group";
 import SectionHeader from "components/section-header";
 import { IoIosCheckmarkCircle, IoIosCloseCircle } from "react-icons/io";
+import FadeInWhenVisible from "components/motion/FadeInWhenVisible";
 
 const packages = {
     monthly: [
@@ -280,42 +281,50 @@ export default function Package() {
     return (
         <section id="pricing" sx={{ variant: "section.pricing" }}>
             <Container>
-                <SectionHeader slogan="Pricing Plan" title="Choose your plan" />
+                <FadeInWhenVisible>
+                    <SectionHeader
+                        slogan="Pricing Plan"
+                        title="Choose your plan"
+                    />
+                </FadeInWhenVisible>
+                <FadeInWhenVisible>
+                    <Flex sx={styles.buttonGroup}>
+                        <Box sx={styles.buttonGroupInner}>
+                            <button
+                                className={
+                                    state.active === "monthly" ? "active" : ""
+                                }
+                                type="button"
+                                aria-label="Monthly"
+                                onClick={() => handlePricingPlan("monthly")}
+                            >
+                                Monthly Plan
+                            </button>
 
-                <Flex sx={styles.buttonGroup}>
-                    <Box sx={styles.buttonGroupInner}>
-                        <button
-                            className={
-                                state.active === "monthly" ? "active" : ""
-                            }
-                            type="button"
-                            aria-label="Monthly"
-                            onClick={() => handlePricingPlan("monthly")}
-                        >
-                            Monthly Plan
-                        </button>
-
-                        <button
-                            className={
-                                state.active === "annual" ? "active" : ""
-                            }
-                            type="button"
-                            aria-label="Annual"
-                            onClick={() => handlePricingPlan("annual")}
-                        >
-                            Annual Plan
-                        </button>
-                    </Box>
-                </Flex>
+                            <button
+                                className={
+                                    state.active === "annual" ? "active" : ""
+                                }
+                                type="button"
+                                aria-label="Annual"
+                                onClick={() => handlePricingPlan("annual")}
+                            >
+                                Annual Plan
+                            </button>
+                        </Box>
+                    </Flex>
+                </FadeInWhenVisible>
 
                 <Box sx={styles.pricingWrapper} className="pricing__wrapper">
-                  <Carousel {...sliderParams}>
-                    {state.pricingPlan.map(packageData => (
-                      <Box sx={styles.pricingItem} key={packageData.id}>
-                        <PriceCard data={packageData} />
-                      </Box>
-                    ))}
-                  </Carousel>
+                    <Carousel {...sliderParams}>
+                        {state.pricingPlan.map((packageData) => (
+                            <Box sx={styles.pricingItem} key={packageData.id}>
+                                <FadeInWhenVisible>
+                                    <PriceCard data={packageData} />
+                                </FadeInWhenVisible>
+                            </Box>
+                        ))}
+                    </Carousel>
                 </Box>
             </Container>
         </section>

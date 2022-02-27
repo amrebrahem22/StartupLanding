@@ -2,14 +2,22 @@
 import { jsx, Container, Flex, Button } from "theme-ui";
 import { keyframes } from "@emotion/core";
 import { Link } from "react-scroll";
+import { motion } from 'framer-motion';
 import Logo from "components/logo";
 import LogoDark from "assets/logo.svg";
 import MobileDrawer from "./mobile-drawer";
 import menuItems from "./header.data";
 
+const variants = {
+    hidden: { y: -80 },
+    visible: { y: 0 },
+  }
+
 export default function Header({ className }) {
     return (
-        <header sx={styles.header} className={className} id="header">
+        <motion.header initial="hidden"
+        animate="visible"
+        variants={variants} transition={{ duration: 1 }} sx={styles.header} className={className} id="header">
             <Container sx={styles.container}>
                 <Logo src={LogoDark} />
                 <Flex sx={styles.nav} as="nav">
@@ -36,7 +44,7 @@ export default function Header({ className }) {
                 </Button>
                 <MobileDrawer />
             </Container>
-        </header>
+        </motion.header>
     );
 }
 
