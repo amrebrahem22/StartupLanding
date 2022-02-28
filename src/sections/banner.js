@@ -1,6 +1,7 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import { Container, Box, Heading, Text, Image, Button } from "theme-ui";
+import { jsx, Image } from "theme-ui";
+import { Container, Box, Heading, Text, Button } from "theme-ui";
 import BannerImg from "assets/banner-thumb.png";
 import ShapeLeft from "assets/shape-left.png";
 import ShapeRight from "assets/shape-right.png";
@@ -34,7 +35,10 @@ export default function Banner() {
                         <Button variant="primary">Explore</Button>
                     </Box>
                     <Box sx={styles.banner.imageBox}>
-                        <Image src={BannerImg} alt="banner" />
+                        <Image
+                            src={BannerImg}
+                            alt="banner"
+                        />
                     </Box>
                 </motion.div>
             </Container>
