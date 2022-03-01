@@ -58,9 +58,8 @@ export default function KeyFeature() {
 
                 <Grid sx={styles.grid}>
                     {data.map((item) => (
-                        <FadeInWhenVisible>
+                        <FadeInWhenVisible key={item.id}>
                             <FeatureCardColumn
-                                key={item.id}
                                 src={item.imgSrc}
                                 alt={item.altText}
                                 title={item.title}

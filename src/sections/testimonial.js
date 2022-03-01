@@ -114,9 +114,9 @@ export default function TestimonialCard() {
             </Container>
             <Box sx={styles.carouselWrapper}>
                 <Carousel {...carouselParams}>
-                    {data.map((item) => (
-                        <FadeInWhenVisible>
-                            <Box sx={styles.reviewCard} key={item.sliderClass}>
+                    {data.map((item,i) => (
+                        <FadeInWhenVisible key={i}>
+                            <Box sx={styles.reviewCard}>
                                 <Rating rating={item.review} />
                                 <Heading as="h3" sx={styles.title}>
                                     {item.title}
