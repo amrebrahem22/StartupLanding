@@ -11,7 +11,7 @@ import {
     Button,
     Image,
 } from "theme-ui";
-import { keyframes } from "@emotion/core";
+import { keyframes } from "@emotion/react";
 import TextFeature from "components/text-feature";
 import ModalVideo from "react-modal-video";
 import { IoIosPlay } from "react-icons/io";
